@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="card">
+       <p class="instruction">Enter currency ammount and press 'Enter'</p>
+        <form class="form" [formGroup]="form">
+            <div class="form-control">
+                <mat-form-field appearance="fill">
+                    <mat-label>Currency</mat-label>
+                    <mat-select (selectionChange)="firstConv(form.value.firstCurr, first, form.value.secondCurr)" formControlName="firstCurr">
+                        <mat-option value="USD">USD</mat-option>
+                        <mat-option value="UAH">UAH</mat-option>
+                        <mat-option value="EUR">EUR</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <input
+                    matInput
+                    type="text"
+                    id="base"
+                    class="form__input"
+                    formControlName="first"
+                    [(ngModel)]="first"
+                    (change)="firstConv(form.value.firstCurr, first, form.value.secondCurr)"
+                    />
+                </mat-form-field>
+            </div>
+
+            <div class="form-control">
+              <mat-form-field appearance="fill">
+                <mat-label>Currency</mat-label>
+                <mat-select (selectionChange)="secondConv(form.value.secondCurr, second, form.value.firstCurr)" formControlName="secondCurr" >
+                    <mat-option value="USD">USD</mat-option>
+                    <mat-option value="UAH">UAH</mat-option>
+                    <mat-option value="EUR">EUR</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  type="text"
+                  id="base"
+                  class="form__input"
+                  formControlName="second"
+                  [(ngModel)]="second"
+                  (change)="secondConv(form.value.secondCurr, second, form.value.firstCurr)"
+                />
+              </mat-form-field>
+            </div>
+
+              
+        </form>
+    </div>
+</div>
